@@ -1,0 +1,12 @@
+TODO LIST:
+
+MAKE DIVS RESIZABLE - look at jsfiddle
+    Retouch all views
+    Put some controllers between them
+    Moving controllers resizes the sectors
+    Vertical changes percentages between columns
+    Horizontal changes the behaviour view and object view
+    
+Remove weird colours
+
+Figure out HTML5 game stuff

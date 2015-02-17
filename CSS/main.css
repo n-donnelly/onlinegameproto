@@ -1,0 +1,47 @@
+#header {
+    height: 42px;
+    background: #0000ff;
+    margin-bottom: 0.2em;
+}
+
+#gameView {
+    float: left;
+    background: #00ff00;
+    width: 74%;
+    height: 90%;
+    position: absolute;
+    margin-right: 0.4em;
+    left: 0.3em;
+    resize: both;
+    overflow: auto;
+}
+
+#rightBar {
+    right: 0.3em;
+    background: #ff0000;
+    width: 25%;
+    height:90%;
+    position: absolute;
+    resize: both;
+    overflow: auto;
+}
+
+#objectView {
+    height: 48.5%;
+    margin: 0.2em;
+    background: #000000;
+    resize: both;
+    overflow: auto;
+}
+
+#behaviourView {
+    height: 48.5%;
+    margin: 0.2em;
+    background: #ffff00;
+    resize: both;
+    overflow: auto;
+}
+
+body {
+    margin: 0px;
+}
