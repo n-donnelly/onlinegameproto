@@ -1,5 +1,5 @@
 #header {
-    height: 42px;
+    height: 64px;
     background: #0000ff;
     margin-bottom: 0.2em;
 }
@@ -8,38 +8,48 @@
     float: left;
     background: #00ff00;
     width: 74%;
-    height: 90%;
-    position: absolute;
-    margin-right: 0.4em;
-    left: 0.3em;
-    resize: both;
-    overflow: auto;
+    height: 100%;
+    opacity: 0.5;
 }
 
 #rightBar {
-    right: 0.3em;
-    background: #ff0000;
-    width: 25%;
-    height:90%;
-    position: absolute;
-    resize: both;
-    overflow: auto;
+    width: 25.5%;
+    height:100%;
+    float:right;
 }
 
 #objectView {
-    height: 48.5%;
-    margin: 0.2em;
-    background: #000000;
-    resize: both;
-    overflow: auto;
+    height: 49.5%;
+    background: #eee;
+    opacity: 0.5;
 }
 
 #behaviourView {
-    height: 48.5%;
-    margin: 0.2em;
-    background: #ffff00;
-    resize: both;
-    overflow: auto;
+    height: 49.5%;
+    background: #eee;
+    opacity: 0.5;
+}
+
+#content {
+    height:89%;
+    width: 100%;
+    position: absolute;
+}
+
+.resize_bar {
+    background: #000;
+    cursor: resize_bar;
+}
+
+.hor_resizer {
+    height: 6px;
+    width: 100%;
+}
+
+.vert_resizer {
+    width: 0.5%;
+    height:100%;
+    float: left;
 }
 
 body {
