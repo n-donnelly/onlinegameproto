@@ -1,0 +1,13 @@
+*.class
+
+*.mtj.tmp/
+
+*.jar
+*.war
+*.ear
+
+Servers/
+RemoteSystemsTempFiles/
+WEB_INF/lib
+build/classes
+

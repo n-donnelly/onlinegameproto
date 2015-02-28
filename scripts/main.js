@@ -1,1 +1,0 @@
-$("#gameView").html("CHANGED GAME VIEW")

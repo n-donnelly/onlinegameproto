@@ -52,6 +52,11 @@
     float: left;
 }
 
+#canvas {
+	width: inherited;
+	height: inherited;
+}
+
 body {
     margin: 0px;
 }
