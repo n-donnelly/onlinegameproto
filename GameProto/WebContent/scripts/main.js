@@ -17,6 +17,7 @@ $("#vert_resizer").draggable({
 });
 
 fillCanvasTest();
+gameInit(canvas);
 
 function fitToContainer(canvas){
   // Make it visually fill the positioned parent

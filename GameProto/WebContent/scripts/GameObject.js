@@ -1,4 +1,4 @@
-function Object(type) {
+function GameObject(type) {
     this.id = "";
     this.name;
     this.position = [];
@@ -32,6 +32,42 @@ function Object(type) {
             b();
         }
     }
+    
+    this.createRect = function(id, name, x, y, w, h, color){
+        this.id = id;
+        this.name = name;
+        this.position['x'] = x;
+        this.position['y'] = y;
+        this.size['width'] = w;
+        this.size['height'] = h;
+        this.color = color;
+    }
+    
+    this.setPosition = function(x, y){
+        this.position['x'] = x;
+        this.position['y'] = y;
+    }
+    
+    this.setSize = function(w, h){
+        this.size['width'] = w;
+        this.size['height'] = h;
+    }
+    
+    this.getPosition = function() {
+        return this.position;
+    }
+    
+    this.getSize = function() {
+        return this.size;
+    }
+    
+    this.setColour = function(col) {
+        this.colour = col;
+    }
+    
+    this.getColour = function() {
+        return this.colour;
+    }
 };
 
 function Behaviour() {
@@ -41,4 +77,4 @@ function Behaviour() {
     this.run = function(){
         
     }
-}
+};
