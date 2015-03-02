@@ -2,6 +2,7 @@ var canvas = document.querySelector('canvas');
 fitToContainer(canvas);
 var context = canvas.getContext("2d");
 
+
 $("#hor_resizer").draggable({
     axis: "y",
     drag: function() {

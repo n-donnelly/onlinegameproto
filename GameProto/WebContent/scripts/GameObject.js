@@ -18,10 +18,6 @@ function GameObject(type) {
                 break;
             case "image":
                 break;
-            case "circle":
-                con.fillStyle = this.color;
-                con.arc(this.position['x'], this.position['y'], this.size['rad'], 0, 2*Math.PI, true);
-                break;
             default:
                 break;
         }
@@ -31,6 +27,18 @@ function GameObject(type) {
         for(var b in this.behaviours){
             b();
         }
+    }
+    
+    this.getID = function() {
+        return this.id;
+    }
+    
+    this.getName = function() {
+        return this.name;
+    }
+    
+    this.getType = function() {
+        return this.type;
     }
     
     this.createRect = function(id, name, x, y, w, h, color){
@@ -69,6 +77,61 @@ function GameObject(type) {
         return this.colour;
     }
 };
+
+function Circle(id, name, radius, x, y, color) {
+    this.gObj = new GameObject("Circle");
+    this.gObj.name = name;
+    this.gObj.id = id;
+    this.radius = radius;
+    this.gObj.position['x'] = x;
+    this.gObj.position['y'] = y;
+    this.gObj.color = color;
+    
+    this.draw = function(con){
+        con.strokeStyle = color;
+        con.fillStyle = color;
+        con.beginPath();
+        con.arc(this.gObj.position['x'], this.gObj.position['y'], this.radius, 0, 2*Math.PI, true);
+        con.fill();
+        con.stroke();
+    }
+    
+    this.update = function() {
+        this.gObj.update();
+    }
+    
+    this.getName = function() {
+        return this.gObj.getName();
+    }
+    
+    this.getID = function() {
+        return this.gObj.getID();
+    }
+    
+    this.getRadius = function() {
+        return this.radius;
+    }
+    
+    this.setRadius = function(rad) {
+        this.radius = rad;
+    }
+    
+    this.getPosition = function() {
+        return this.gObj.position;
+    }
+    
+    this.setPosition = function(x, y) {
+        this.gObj.setPosition(x,y);
+    }
+    
+    this.setColour = function(col) {
+        this.gObj.setColour(col);
+    }
+    
+    this.getColour = function(){
+        return this.gObj.getColour();
+    }
+}
 
 function Behaviour() {
     this.type = "auto";
