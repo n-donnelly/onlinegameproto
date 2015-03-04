@@ -133,6 +133,69 @@ function Circle(id, name, radius, x, y, color) {
     }
 }
 
+function Line(id, name, x1, y1, x2, y2, width, color) {
+    this.gObj = new GameObject("Circle");
+    this.gObj.name = name;
+    this.gObj.id = id;
+    this.gObj.position['x1'] = x1;
+    this.gObj.position['y1'] = y1;
+    this.gObj.position['x2'] = x2;
+    this.gObj.position['y2'] = y2;
+    this.width = width;
+    this.gObj.color = color;
+    
+    this.draw = function(con){
+        con.strokeStyle = color;
+        con.fillStyle = color;
+        var lineWidth = con.lineWidth;
+        con.beginPath();
+        con.moveTo(this.gObj.position['x1'], this.gObj.position['y1']);
+        con.lineTo(this.gObj.position['x2'], this.gObj.position['y2']);
+        con.lineWidth = this.width;
+        con.stroke();
+    }
+    
+    this.update = function() {
+        this.gObj.update();
+    }
+    
+    this.getName = function() {
+        return this.gObj.getName();
+    }
+    
+    this.getID = function() {
+        return this.gObj.getID();
+    }
+    
+    this.getPositions = function() {
+        return this.gObj.position;
+    }
+    
+    this.setPositions = function(x1, y1, x2, y2) {
+        this.gObj.position['x1'] = x1;
+        this.gObj.position['y1'] = y1;
+        this.gObj.position['x2'] = x2;
+        this.gObj.position['y2'] = y2;
+    }
+    
+    this.setColour = function(col) {
+        this.gObj.setColour(col);
+    }
+    
+    this.getColour = function(){
+        return this.gObj.getColour();
+    }
+    
+    this.getLineWidth = function(){
+        return this.width;
+    }
+    
+    this.setLineWidth = function(lineW){
+        this.width = lineW;
+    }
+}
+
+
 function Behaviour() {
     this.type = "auto";
     this.name = "";

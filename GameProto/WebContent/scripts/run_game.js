@@ -11,6 +11,9 @@ function gameInit(canvas) {
     var circle1 = new Circle("circle1", "circle1", 100, 400, 300, "#00f");
     gameObjects.push(circle1);
     
+    var line1 = new Line("line1", "line1", 10, 10, 100, 100, 10, "#000");
+    gameObjects.push(line1);
+    
     context.scale(winWidth/canvasWidth, winHeight/canvasHeight);
     
     update();
