@@ -195,6 +195,77 @@ function Line(id, name, x1, y1, x2, y2, width, color) {
     }
 }
 
+function Text(id, name, x, y, text, size, font, color) {
+    this.gObj = new GameObject("Text");
+    this.gObj.name = name;
+    this.gObj.id = id;
+    this.gObj.position['x'] = x;
+    this.gObj.position['y'] = y;
+    this.text = text;
+    this.size = size;
+    this.font = font;
+    this.gObj.color = color;
+    
+    this.draw = function(con){
+        con.strokeStyle = color;
+        con.fillStyle = color;
+        con.font = size + "px " + font;
+        con.fillText(this.text, this.gObj.position['x'], this.gObj.position['y']);
+    }
+    
+    this.update = function() {
+        this.gObj.update();
+    }
+    
+    this.getName = function() {
+        return this.gObj.getName();
+    }
+    
+    this.getID = function() {
+        return this.gObj.getID();
+    }
+    
+    this.getPositions = function() {
+        return this.gObj.position;
+    }
+    
+    this.setPositions = function(x1, y1) {
+        this.gObj.position['x1'] = x1;
+        this.gObj.position['y1'] = y1;
+    }
+    
+    this.setColour = function(col) {
+        this.gObj.setColour(col);
+    }
+    
+    this.getColour = function(){
+        return this.gObj.getColour();
+    }
+    
+    this.getText = function(){
+        return this.text;
+    }
+    
+    this.setText = function(newText){
+        this.text = newText;
+    }
+    
+    this.getSize = function(){
+        return this.size;
+    }
+    
+    this.setSize = function(newSize){
+        this.size = newSize;
+    }
+    
+    this.getFont = function(){
+        return this.font;
+    }
+    
+    this.setText = function(newFont){
+        this.font = newFont;
+    }
+}
 
 function Behaviour() {
     this.type = "auto";

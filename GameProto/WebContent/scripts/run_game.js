@@ -14,6 +14,10 @@ function gameInit(canvas) {
     var line1 = new Line("line1", "line1", 10, 10, 100, 100, 10, "#000");
     gameObjects.push(line1);
     
+    var t = "SAMPLE TEXT";
+    var text1 = new Text("text1", "text1", 100, 50, t, "30", "Arial", "#f0f");
+    gameObjects.push(text1);
+    
     context.scale(winWidth/canvasWidth, winHeight/canvasHeight);
     
     update();
