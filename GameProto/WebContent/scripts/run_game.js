@@ -1,4 +1,5 @@
 var gameObjects = [];
+var FPS = 60;
 
 function gameInit(canvas) {
     var gameObject1 = new GameObject("fill_rect");
@@ -20,6 +21,15 @@ function gameInit(canvas) {
     
     context.scale(winWidth/canvasWidth, winHeight/canvasHeight);
     
+    var image1;
+    imageLoader.load("/GameProto/WebContent/TestImages/korra_sprite.png", function(im) {
+        image1 = new protoImage("kI", "Korra", im, 0, 0, im.width*1.5, im.height*1.5);
+        gameObjects.push(image1);
+    });
+    //gameObjects.push(image1);
+    
+    //setInterval(update(), 500);
+    //setInterval(draw(context), 500);
     update();
     draw(context);
 };
@@ -30,7 +40,9 @@ function update() {
             e.update();
         });
     }
-        //setTimeout(update, 1000/60);
+    setTimeout(function(){
+        update()
+    }, 1000/FPS);
 };
 
 function draw(context) {
@@ -40,7 +52,9 @@ function draw(context) {
             e.draw(context);
         });
     }
-    //setTimeout(draw(context), 1000/60);
+    setTimeout(function(){
+        draw(context)
+    }, 1000/FPS);
 };
 
 function addObject(obj) {

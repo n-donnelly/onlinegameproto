@@ -267,6 +267,54 @@ function Text(id, name, x, y, text, size, font, color) {
     }
 }
 
+function protoImage(id, name, Image, x, y, w, h) {
+    this.gObj = new GameObject("Circle");
+    this.gObj.name = name;
+    this.gObj.id = id;
+    this.image = Image;
+    this.isLoaded = false
+    this.gObj.position['x'] = x;
+    this.gObj.position['y'] = y;
+    this.gObj.size['width'] = w;
+    this.gObj.size['height'] = h;
+    
+    this.draw = function(con){
+        con.drawImage(this.image, this.gObj.position['x'], this.gObj.position['y'], this.gObj.size['width'], this.gObj.size['height']);
+    }
+    
+    this.update = function() {
+        this.gObj.update();
+    }
+    
+    this.getName = function() {
+        return this.gObj.getName();
+    }
+    
+    this.getID = function() {
+        return this.gObj.getID();
+    }
+    
+    this.getPosition = function() {
+        return this.gObj.position;
+    }
+    
+    this.setPosition = function(x, y) {
+        this.gObj.setPosition(x,y);
+    }
+    
+    this.getImage = function() {
+        return this.image;
+    }
+    
+    this.setSize = function(w,h) {
+        this.gObj.setSize(w,h);
+    }
+    
+    this.getSize = function() {
+        return this.gObj.getSize();
+    }
+}
+
 function Behaviour() {
     this.type = "auto";
     this.name = "";
