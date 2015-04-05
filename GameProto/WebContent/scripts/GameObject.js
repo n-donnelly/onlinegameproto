@@ -268,7 +268,7 @@ function Text(id, name, x, y, text, size, font, color) {
 }
 
 function protoImage(id, name, Image, x, y, w, h) {
-    this.gObj = new GameObject("Circle");
+    this.gObj = new GameObject("Image");
     this.gObj.name = name;
     this.gObj.id = id;
     this.image = Image;
@@ -284,6 +284,124 @@ function protoImage(id, name, Image, x, y, w, h) {
     
     this.update = function() {
         this.gObj.update();
+    }
+    
+    this.getName = function() {
+        return this.gObj.getName();
+    }
+    
+    this.getID = function() {
+        return this.gObj.getID();
+    }
+    
+    this.getPosition = function() {
+        return this.gObj.position;
+    }
+    
+    this.setPosition = function(x, y) {
+        this.gObj.setPosition(x,y);
+    }
+    
+    this.getImage = function() {
+        return this.image;
+    }
+    
+    this.setSize = function(w,h) {
+        this.gObj.setSize(w,h);
+    }
+    
+    this.getSize = function() {
+        return this.gObj.getSize();
+    }
+}
+
+function protoAnim(id, name, Image, x, y, w, h, numImages, rows, speed){
+    this.gObj = new GameObject("Sprite");
+    this.gObj.name = name;
+    this.gObj.id = id;
+    this.image = Image;
+    this.rows = rows;
+    this.numImages = numImages;
+    this.lastTime = 0;
+    this.pauseTime = 0;
+    this.paused = false;
+    this.speed = speed;
+    this.gObj.position['x'] = x;
+    this.gObj.position['y'] = y;
+    this.gObj.size['width'] = w;
+    this.gObj.size['height'] = h;
+    
+    function frame(id, fX, fY, fW, fH){
+        this.id = id;
+        this.x = fX;
+        this.y = fY;
+        this.w = fW;
+        this.h = fH;
+        
+        this.draw = function(context, image, iX, iY){
+            context.drawImage(image, this.x, this.y, this.w, this.h, iX, iY, this.w, this.h);
+        }
+    }
+    
+    this.frames = [];
+    var i = 0;
+    var tX = 0;
+    var tY = 0;
+    for(i = 0; i < numImages; i++){
+        this.frames[i] = new frame(i, tX, tY, w, h)
+        
+        if(tX + this.gObj.size['width'] < this.image.width){
+            tX = tX + this.gObj.size['width'];
+        } else {
+            if(tY + this.gObj.size['height'] < this.image.height && rows > (this.image.height/this.gObj.size['height'])){
+                tY = tY + this.gObj.size['height'];
+            }
+        }
+    }
+    this.frameIndex = 0;
+    
+    this.getNextFrame = function(){
+        this.frameIndex = (this.frameIndex+1)%numImages;
+    }
+    
+    this.draw = function(con){
+        if(!this.paused){
+            this.frames[this.frameIndex].draw(con, this.image, this.gObj.position['x'], this.gObj.position['y']);
+        }
+    }
+    
+    this.update = function() {
+        this.lastTime = Date.now();
+        
+        this.update = function(){
+            var currentTime = Date.now();
+            if(this.paused){
+                var delta = currentTime - this.pauseTime;
+                this.lastTime = this.lastTime + delta;
+                this.pauseTime = currentTime;
+            } else {
+                var delta = currentTime - this.lastTime;
+                if(delta > 1000/speed){
+                    this.lastTime = currentTime;
+                    this.getNextFrame();
+                }
+            }
+        }
+    }
+    
+    this.pause = function() {
+        this.paused = true;
+        this.pauseTime = Date.now();
+    }
+    
+    this.play = function() {
+        this.paused = false;
+        this.pauseTime = 0;
+    }
+    
+    this.reset = function() {
+        this.frameIndex = 0;
+        this.lastTime = Date.now();
     }
     
     this.getName = function() {

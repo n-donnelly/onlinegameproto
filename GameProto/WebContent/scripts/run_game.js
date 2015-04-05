@@ -26,6 +26,12 @@ function gameInit(canvas) {
         image1 = new protoImage("kI", "Korra", im, 0, 0, im.width*1.5, im.height*1.5);
         gameObjects.push(image1);
     });
+    
+    var anim1;
+    imageLoader.load("/GameProto/WebContent/TestImages/NegaScot.png", function(anim) {
+       anim1 = new protoAnim("ns1", "Nega Scott", anim, 0, 50, 43, 61, 9, 1, 8);
+       gameObjects.push(anim1);
+    });
     //gameObjects.push(image1);
     
     //setInterval(update(), 500);
