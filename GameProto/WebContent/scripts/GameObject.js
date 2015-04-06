@@ -432,12 +432,3 @@ function protoAnim(id, name, Image, x, y, w, h, numImages, rows, speed){
         return this.gObj.getSize();
     }
 }
-
-function Behaviour() {
-    this.type = "auto";
-    this.name = "";
-    this.relatedObjects = [];
-    this.run = function(){
-        
-    }
-};

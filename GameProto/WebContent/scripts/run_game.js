@@ -2,6 +2,10 @@ var gameObjects = [];
 var FPS = 60;
 
 function gameInit(canvas) {
+    
+    var ProtoInput = new Input();
+    ProtoInput.initInput();
+    
     var gameObject1 = new GameObject("fill_rect");
     var gameObject2 = new GameObject("fill_rect");
     gameObject1.createRect("rect1", "rect", 100, 100, 200, 100, "#f00");
@@ -61,14 +65,6 @@ function draw(context) {
     setTimeout(function(){
         draw(context)
     }, 1000/FPS);
-};
-
-function addObject(obj) {
-    gameObjects.push(obj);
-};
-
-function removeObject(id) {
-    gameObjects[id] = null;
 };
 
 function updateObject(id,obj) {
