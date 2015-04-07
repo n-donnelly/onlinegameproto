@@ -2,7 +2,7 @@ function Input() {
     this.behaviours = [];
     this.numberOfSubscribedObjects = 0;
 
-    function initInput() {
+    this.initInput = function() {
         document.addEventListener("keyDown", this.keyDownListener, false);
         document.addEventListener("keyUp", this.keyUpListener, false);
     }
@@ -14,7 +14,7 @@ function Input() {
                 obj.keyDownEvent(keyPressed);
             }
         }
-    }
+    };
     
     this.keyUpListener = function(event) {
         var keyPressed = String.fromCharCode(event.keyCode);
@@ -23,15 +23,15 @@ function Input() {
                 obj.keyUpEvent(keyPressed);
             }
         }
-    }
+    };
     
     this.subscribeObject = function(name, obj){
         this.behaviours[name] = obj;
         this.numberOfSubscribedObjects++;
-    }
+    };
     
     this.unsubscribeObject = function(name){
         this.behaviours[name] = null;
         this.numberOfSubscribedObjects--;
-    }
+    };
 }
